@@ -1,0 +1,47 @@
+.battleship-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background-image: url('/path/to/naval-battle-background.jpg'); */
+    background-size: cover;
+    padding: 20px;
+  }
+  
+  .player-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .board {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    gap: 2px;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .cell {
+    width: 30px;
+    height: 30px;
+    background-color: #1e90ff; /* Sea color */
+    position: relative;
+  }
+  
+  .cell.ship {
+    background-color: #808080; /* Ship color */
+  }
+  
+  .cell.hit::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
