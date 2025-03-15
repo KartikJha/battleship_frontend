@@ -132,7 +132,7 @@ function GridPage() {
     return () => clearInterval(interval)
   }, [])
 
-  const selectGrid = (gridId) => {
+  const selectBoard = (gridId) => {
     localStorage.setItem('gridId', gridId)
     navigate('/game')
   }
@@ -161,9 +161,9 @@ function GridPage() {
         
         <div className="bg-white p-6 rounded-xl shadow-lg">
           <p className="text-gray-600 mb-6 text-center">
-            Choose a grid position to start your naval battle
+            Choose a board to start your naval battle
           </p>
-          <ProgressiveBoards />
+          <ProgressiveBoards selectBoard={selectBoard} />
         </div>
       </div>
     </div>

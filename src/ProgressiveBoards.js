@@ -15,7 +15,7 @@ const generateBoard = (size) => {
   return board
 }
 
-const ProgressiveBoards = () => {
+const ProgressiveBoards = ({selectBoard}) => {
   const grid = []
   for (let i = 0; i < 3; i++) {
     const boards = []
@@ -43,7 +43,7 @@ const ProgressiveBoards = () => {
               return (
                 <div>
                   <h3 className="text-lg font-bold text-center mb-4">
-                    Board {index + 1}
+                    Board {index * 3 + (i + 1)}
                   </h3>
                   <div
                     className="grid gap-1 border border-black"
@@ -52,6 +52,7 @@ const ProgressiveBoards = () => {
                     //     width: '100%',
                     //     aspectRatio: '1 / 1',
                     //   }}
+                    onClick={() => selectBoard(index * 3 + (i + 1))}
                   >
                     {board.map((boardRow, i) => (
                       <div
@@ -62,6 +63,7 @@ const ProgressiveBoards = () => {
                           display: 'flex',
                           justifyContent: 'space-around',
                         }}
+                        
                       >
                         {boardRow.map((cell, j) => (
                           <div
