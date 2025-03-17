@@ -11,6 +11,8 @@ const GamePage = () => {
   const [socket, setSocket] = useState(null)
   const [gameData, setGameData] = useState(null)
 
+  
+
   useEffect(() => {
     // Initialize WebSocket connection
     const newSocket = new WebSocket(`${WS_BASE}/${playerId}/${gridId}`)
@@ -80,6 +82,26 @@ const GamePage = () => {
     }
   }
 
+  const getCellBackgroundColor = (cell, isEnemy) => {
+    if (isEnemy && !cell.endsWith('1')) {
+      return 'bg-gray-700';
+    } else if (cell === 'sea' || cell === 'sea1') {
+      return 'bg-blue-500';
+    } else if (cell.startsWith('Q')) {
+        if (cell[1] === '0') {
+            return 'bg-blue-500';
+        }
+        return 'bg-red-500';
+    } else if (cell.startsWith('P')) {
+        if (cell[1] === '0') {
+            return 'bg-blue-500';
+        }
+        return 'bg-yellow-500';
+    } else {
+      return 'bg-gray-700';
+    }
+  }
+
   const renderBoard = (board, isEnemy = false) => {
     return (
       <div className="grid grid-cols-9 gap-1">
@@ -88,17 +110,7 @@ const GamePage = () => {
             {row.map((cell, cellIndex) => (
               <div
                 key={cellIndex}
-                className={`aspect-square flex items-center justify-center rounded border ${
-                  isEnemy && (cell.endsWith('0') || cell.endsWith('e'))
-                    ? 'bg-gray-700'
-                    : cell === 'sea'
-                    ? 'bg-blue-500'
-                    : cell.startsWith('Q')
-                    ? 'bg-red-500'
-                    : cell.startsWith('P')
-                    ? 'bg-yellow-500'
-                    : 'bg-gray-700'
-                } text-white font-medium`}
+                className={`aspect-square flex items-center justify-center rounded border ${getCellBackgroundColor(cell, isEnemy)} text-white font-medium`}
                 onClick={() => {
                   if (isEnemy) {
                     setShotPosition(
