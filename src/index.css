@@ -269,6 +269,10 @@ body {
   border-width: 1px;
 }
 
+.border-black {
+  border-color: #000000;
+}
+
 .bg-blue-500 {
   background-color: #4299e1;
 }

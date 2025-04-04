@@ -58,17 +58,17 @@ const ProgressiveBoards = ({selectBoard}) => {
                       <div
                         key={`boardRow${i}`}
                         className="flex items-center justify-center border border-black text-black font-medium"
-                        style={{
-                          flexDirection: 'row',
-                          display: 'flex',
-                          justifyContent: 'space-around',
-                        }}
+                        // style={{
+                        //   flexDirection: 'row',
+                        //   display: 'flex',
+                        //   justifyContent: 'space-around',
+                        // }}
                         
                       >
                         {boardRow.map((cell, j) => (
                           <div
                             key={`cell${j}`}
-                            className="flex items-center justify-center w-full h-full"
+                            className="flex items-center justify-center w-full h-full border border-black aspect-square flex items-center justify-center rounded border"
                           >
                             {cell}
                           </div>
